@@ -6,8 +6,6 @@ class Node:
     
     
 
-
-
 # Create a LinkedList class to manage the waitlist
 class LinkedList:
     def __init__(self):
@@ -70,24 +68,23 @@ def waitlist_generator():
         if choice == "1":
             name = input("Enter customer name to add to front: ")
             # Call the add_front method
+            waitlist.add_front(name)
             
 
         elif choice == "2":
             name = input("Enter customer name to add to end: ")
             # Call the add_end method
-            
+            waitlist.add_end(name)
 
         elif choice == "3":
             name = input("Enter customer name to remove: ")
             # Call the remove method
-            
+            waitlist.remove(name)
             
         elif choice == "4":
             print("Current waitlist:")
             # Print out the entire linked list using the print_list method.
-            
-            
-            
+            waitlist.print_list()
 
         elif choice == "5":
             print("Exiting waitlist manager.")
@@ -96,11 +93,25 @@ def waitlist_generator():
             print("Invalid option. Please choose 1–5.")
 
 # Call the waitlist_generator function to start the program
-
+waitlist_generator()
 
 '''
 Design Memo: Write Your Design Memo Include a 200–300 word response in your code or in a .txt file:
 - How does your list work?
 - What role does the head play?
 - When might a real engineer need a custom list like this?
-'''
+
+I used a linked list to manage a waitlist of customers. It holds customer names in nodes that all link to each other. 
+The entry point to the list is the first node which is called the head. The head is important because it allows us to 
+access the entire list. If we lose the head, we lose access to all the nodes in the list. Each node has a name and a next 
+pointer which connects each customer to the next customer in the waitlist. The add_front method adds a new 
+customer to the beginning of the list and the add_end method adds a customer to the end. The remove method searches for
+a customer's name and removes their node from the list. The print_list method goes through each node and prints the customers 
+in the waitlist. An angineer might need a custom list like this when they need to store data that is constantly being added or 
+removed. For example, a linked list could be useful for a waitlist, queue, playlist, or other collection where the order of 
+items can change. Python already has built-in lists, but creating a custom linked list can give an engineer more control over how 
+the data is connected and can help them understand how data structures work. Another example could be when an engineer is working 
+with a large amount of data and needs to optimize memory usage. A linked list can be more efficient than a built-in list in 
+certain scenarios, especially when it comes to inserting and deleting elements. Overall, this custom linked list implementation 
+provides a simple yet effective way to manage a dynamic collection of customer names in a waitlist scenario.
+
